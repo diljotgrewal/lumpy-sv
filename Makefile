@@ -72,7 +72,7 @@ lumpy_filter: htslib
 
 htslib:
 	$(shell cd lib/htslib && autoreconf)
-	cd lib/htslib && \
+	cd lib/htslib && autoheader && autoconf &&\
 	./configure --disable-bz2 --disable-lzma --enable-libcurl
 	CFLAGS="$(CFLAGS) -DBGZF" $(MAKE) -C lib/htslib --no-print-directory CFLAGS="-DBGZF_MT"
 
